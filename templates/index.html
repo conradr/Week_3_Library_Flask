@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block content %}
+<h1>My Book List!</h1>
+{% for book in books %}
+<div>
+  <p>
+    <a href="/books/{{book.urn}}">{{ book.title }}</a>
+  </p>
+</div>
+{% endfor %} {% endblock %}

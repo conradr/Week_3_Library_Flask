@@ -1,14 +1,65 @@
 {% extends "base.html" %} {% block content %}
-<h1>{{ book.title }}</h1>
-<p>{{ book.description }}</p>
-<p>{{ book.author }}</p>
-<p>{{ book.genre }}</p>
-<p>{{ book.checked_out }}</p>
-<img src ={{ book.cover_url }} width="300px" / ></p>
-<form class="form-inline" action="/books/delete/{{ book.urn }}" method="POST">
-            <input type="submit" value="Delete">
-          </form>
-<form class="form-inline" action="/books/checkin_out/{{ book.urn }}" method="POST">
-            <input type="submit" value="Check">
-          </form>
+<div class="wrapper">
+  <section class="main-left">
+    <img src ={{ book.cover_url }} class="book-cover" / >
+    <form
+      class="form-inline"
+      action="/books/delete/{{ book.urn }}"
+      method="POST"
+    >
+      <input class="btn red-danger" type="submit" value="Delete" />
+    </form>
+  </section>
+  <section class="main-right">
+    <h1 class="title">{{ book.title }}</h1>
+    <h2 class="author">{{ book.author }}</h2>
+    <p>{{ book.description }}</p>
+
+    <p class="pill purple">{{ book.genre }}</p>
+    <h2 class="book-status">Book status</h2>
+    {% if book.checked_out%}
+
+    <div class="status">
+      <p class="pill green">Checked in</p>
+
+      <form
+        class="form-inline"
+        action="/books/checkin_out/{{ book.urn }}"
+        method="POST"
+      >
+        <div class="form-field flex">
+          <label for="lang">Customer checking out the book</label>
+          <select name="customer" id="customer">
+            <option value="">Select</option>
+            {% for customer in customers %}
+            <option value="{{ customer.urn }}">{{ customer.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Check out" />
+      </form>
+    </div>
+
+    {% else %}
+
+    <div class="status">
+      {% for customer in customers %} {% for book in customer.current_book_list
+      %}
+      <p class="pill red">Checked out by {{customer.name}}</p>
+      {% endfor %} {% endfor %}
+      <form
+        class="form-inline"
+        action="/books/checkin/{{ book.urn }}"
+        method="POST"
+      >
+        {% for customer in customers %} {% for book in
+        customer.current_book_list %}
+        <input type="hidden" name="customer" value="{{customer.urn}}" />
+        {% endfor %} {% endfor %}
+        <input class="btn btn-primary" type="submit" value="Check in" />
+      </form>
+    </div>
+    {% endif %}
+  </section>
+</div>
 {% endblock %}

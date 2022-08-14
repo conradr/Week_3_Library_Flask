@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block content %}
+<section>
+  <div class="hero">
+    <h1 class="title">Customer list</h1>
+  </div>
+</section>
+<section>
+  <table class="table">
+    <tr>
+      <th>Customer name</th>
+      <th>Book checked out</th>
+      <th></th>
+    </tr>
+    {% for customer in customers %}
+    <tr>
+      <td>{{customer.name }}</td>
+      {% for book in customer.current_book_list %}
+      <td>
+        <img class="book-thumb" src ={{ book.cover_url }} / ><br />{{ book.title
+        }}
+      </td>
+
+      <td class="edit-buttons">
+        <a class="btn btn-primary" href="/books/{{book.urn}}">Edit</a>
+      </td>
+    </tr>
+    {% endfor %} {% endfor %}
+  </table>
+</section>
+
+{% endblock %}

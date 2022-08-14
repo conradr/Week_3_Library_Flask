@@ -6,4 +6,5 @@ class Book():
         self.genre = genre
         self.checked_out = checked_out
         self.cover_url = cover_url
+        self.lent_to = []
         self.urn = urn

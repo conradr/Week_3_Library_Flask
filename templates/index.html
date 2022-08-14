@@ -1,9 +1,35 @@
 {% extends "base.html" %} {% block content %}
-<h1>My Book List!</h1>
-{% for book in books %}
-<div>
-  <p>
-    <a href="/books/{{book.urn}}">{{ book.title }}</a>
-  </p>
-</div>
-{% endfor %} {% endblock %}
+<section>
+  <div class="hero">
+    <h1 class="title">Book list</h1>
+  </div>
+</section>
+
+<section>
+  <table class="table">
+    <tr>
+      <th>Cover</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Checked status</th>
+      <th></th>
+    </tr>
+    {% for book in books %}
+    <tr>
+      <td><img class="book-thumb" src ={{ book.cover_url }} / ></td>
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      {% if book.checked_out%}
+      <td><p class="pill green">Checked in</p></td>
+      {% else %}
+      <td><p class="pill red">Checked out</p></td>
+      {% endif %}
+      <td class="edit-buttons">
+        <a class="btn btn-primary" href="/books/{{book.urn}}">Edit</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</section>
+
+{% endblock %}

@@ -5,7 +5,7 @@ book1 = Book(
     "Three ordinary women are about to take one extraordinary step.",
     "Kathryn Stockett",
     "Fiction",
-    False,
+    True,
     "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1622355533i/4667024.jpg",
     "the_help_kathryn_stockett"
 )
@@ -33,7 +33,7 @@ book4 = Book(
     "Harry Potter's life is miserable. His parents are dead and he's stuck with his heartless relatives, who force him to live in a tiny closet under the stairs.",
     "J.K Rowling",
     "Fantasy",
-    False,
+    True,
     "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1474154022i/3.jpg",
     "harry_potter_j_k_rowling"
 )
@@ -43,7 +43,7 @@ book5 = Book(
     "Percy Jackson is a good kid, but he can't seem to focus on his schoolwork or control his temper. And lately, being away at boarding school is only getting worse - Percy could have sworn his pre-algebra teacher turned into a monster and tried to kill him.",
     "Rick Riordan",
     "Fantasy",
-    False,
+    True,
     "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1400602609i/28187.jpg",
     "the_lightning_thief_rick_riordan"
 )

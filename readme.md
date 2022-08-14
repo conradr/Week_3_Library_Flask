@@ -25,10 +25,18 @@ We were tasked to create a library where an admin user can create a book in the 
 
 ## Some screenshots
 
+### Library Home
+
 ![Library Home](images/library-home.jpeg)
+
+### Book Details Page
 
 ![Book Details](images/book-details.jpeg)
 
+### Add a book
+
 ![Add Book](images/add-book.jpeg)
+
+### View the customers and their books
 
 ![Customer List](images/customer-list.jpeg)
